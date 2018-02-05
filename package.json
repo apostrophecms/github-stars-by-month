@@ -1,0 +1,17 @@
+{
+  "name": "github-stars-by-month",
+  "version": "0.1.0",
+  "description": "github stars by month in CSV format",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "P'unk Avenue LLC",
+  "license": "MIT",
+  "dependencies": {
+    "bluebird": "^3.5.0",
+    "github": "^9.1.0",
+    "lodash": "^4.17.4",
+    "node-github-api": "0.0.2"
+  }
+}
