@@ -3,7 +3,7 @@
 First copy `config-example.js` to `config.js`, then:
 
 ```
-node app 
+node app apostrophecms/apostrophe
 ```
 
 For monthly data. Use `--frequency=quarterly` for quarterly data.
