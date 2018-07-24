@@ -10,6 +10,7 @@
   "license": "MIT",
   "dependencies": {
     "bluebird": "^3.5.0",
+    "boring": "^0.1.0",
     "github": "^9.1.0",
     "lodash": "^4.17.4",
     "node-github-api": "0.0.2"
