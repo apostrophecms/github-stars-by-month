@@ -6,15 +6,11 @@ var argv = require('boring')();
 
 var starsByMonth = {};
 
-// starsByMonth = JSON.parse(fs.readFileSync('./data.json'));
-// done();
-// process.exit(0);
-
 var github = new GitHubApi({
-    // optional 
+    // optional
     protocol: "https",
     headers: {
-        "user-agent": "stars-by-month" // GitHub is happy with a unique user agent 
+        "user-agent": "stars-by-month" // GitHub is happy with a unique user agent
     },
     Promise: require('bluebird'),
     timeout: 5000
@@ -23,9 +19,14 @@ github.authenticate({
   type: 'token',
   token: config.token
 });
- 
-// TODO: optional authentication here depending on desired endpoints. See below in README. 
- 
+
+if (argv.now) {
+  currentReport();
+  return;
+}
+
+// TODO: optional authentication here depending on desired endpoints. See below in README.
+
 github.activity.getStargazersForRepo({
     owner: 'punkave',
     repo: 'apostrophe',
@@ -128,4 +129,22 @@ function quarterlyReport() {
       stamp = year + '-' + quarter;
     }
   }
+}
+
+function currentReport () {
+  github.repos.get({
+    owner: 'punkave',
+    repo: 'apostrophe',
+    headers: {
+      Accept: 'application/vnd.github.v3.star+json',
+    },
+}, function (err, result) {
+  if (err) {
+    console.error(err);
+    return;
+  }
+  console.log('Stars: ', result.data.stargazers_count);
+  console.log('Issues: ', result.data.open_issues_count);
+  console.log('Watching:', result.data.subscribers_count)
+});
 }
