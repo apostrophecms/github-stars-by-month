@@ -10,7 +10,8 @@ node app apostrophecms/apostrophe
 ## Options:
 
 ### frequency
-For monthly data. Use `--frequency=quarterly` for quarterly data.
+Use `--frequency=quarterly` for quarterly data.
+Use `--frequency=weekly` for weekly data (this uses a Sunday - Saturday week).
 
 ### reverse
 Use `--reverse` to see the data in reverse chronological order.
