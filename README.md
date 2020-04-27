@@ -17,4 +17,4 @@ Use `--reverse` to see the data in reverse chronological order.
 
 ## TODO:
 
--[ ] clean this up as something you can `npm install -g`.
+- [ ] clean this up as something you can `npm install -g`.
