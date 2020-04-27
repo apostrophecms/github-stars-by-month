@@ -6,15 +6,11 @@ var argv = require('boring')();
 
 var starsByMonth = {};
 
-// starsByMonth = JSON.parse(fs.readFileSync('./data.json'));
-// done();
-// process.exit(0);
-
 var github = new GitHubApi({
-    // optional 
+    // optional
     protocol: "https",
     headers: {
-        "user-agent": "stars-by-month" // GitHub is happy with a unique user agent 
+        "user-agent": "stars-by-month" // GitHub is happy with a unique user agent
     },
     Promise: require('bluebird'),
     timeout: 5000
@@ -23,9 +19,9 @@ github.authenticate({
   type: 'token',
   token: config.token
 });
- 
-// TODO: optional authentication here depending on desired endpoints. See below in README. 
- 
+
+// TODO: optional authentication here depending on desired endpoints. See below in README.
+
 github.activity.getStargazersForRepo({
     owner: 'punkave',
     repo: 'apostrophe',
@@ -72,8 +68,10 @@ function monthlyReport() {
   var last = _.last(keys);
   var stamp = first;
   var matches;
+  var lines = [];
+
   while (stamp <= last) {
-    console.log(stamp + ',' + (starsByMonth[stamp] || 0));
+    lines.push(stamp + ',' + (starsByMonth[stamp] || 0))
     matches = stamp.match(/^(\d\d\d\d)\-(\d\d)$/);
     var year, month;
     if (matches) {
@@ -90,6 +88,14 @@ function monthlyReport() {
       stamp = year + '-' + month;
     }
   }
+
+  if (argv.reverse) {
+    lines.reverse();
+  }
+
+  lines.forEach(line => {
+    console.log(line);
+  });
 }
 
 function quarterlyReport() {
@@ -112,8 +118,11 @@ function quarterlyReport() {
   var last = _.last(keys);
   var stamp = first;
   var matches;
+
+  var lines = [];
+
   while (stamp <= last) {
-    console.log(stamp + ',' + (starsByQuarter[stamp] || 0));
+    lines.push(stamp + ',' + (starsByQuarter[stamp] || 0));
     matches = stamp.match(/^(\d\d\d\d)\-(\d\d)$/);
     var year, quarter;
     if (matches) {
@@ -128,4 +137,12 @@ function quarterlyReport() {
       stamp = year + '-' + quarter;
     }
   }
+
+  if (argv.reverse) {
+    lines.reverse();
+  }
+
+  lines.forEach(line => {
+    console.log(line);
+  });
 }
