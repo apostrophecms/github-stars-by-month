@@ -11,6 +11,8 @@ dayjs.extend(weekYear);
 
 var starsGrouped = {};
 
+console.log(argv);
+
 var github = new GitHubApi({
     // optional
     protocol: "https",
@@ -41,7 +43,7 @@ function next(err, result) {
     return;
   }
 
-  if (argv.weekly) {
+  if (argv.frequency === 'weekly') {
     result.data.forEach(groupByWeek);
   } else {
     result.data.forEach(groupByMonth);
@@ -84,9 +86,9 @@ function groupByWeek (datum) {
 
 function done() {
   fs.writeFileSync('./data.json', JSON.stringify(starsGrouped));
-  if (argv.frequency === 'quarterly' && !argv.weekly) {
+  if (argv.frequency === 'quarterly') {
     quarterlyReport();
-  } else if (argv.weekly) {
+  } else if (argv.frequency === 'weekly') {
     weeklyReport();
   } else {
     monthlyReport();
