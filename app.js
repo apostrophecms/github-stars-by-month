@@ -11,8 +11,6 @@ dayjs.extend(weekYear);
 
 var starsGrouped = {};
 
-console.log(argv);
-
 var github = new GitHubApi({
     // optional
     protocol: "https",
