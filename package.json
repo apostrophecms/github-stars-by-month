@@ -1,6 +1,6 @@
 {
   "name": "github-stars-by-month",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "github stars by month in CSV format",
   "main": "app.js",
   "scripts": {
@@ -11,8 +11,9 @@
   "dependencies": {
     "bluebird": "^3.5.0",
     "boring": "^0.1.0",
+    "dayjs": "^1.8.25",
     "github": "^9.1.0",
-    "lodash": "^4.17.4",
+    "lodash": "^4.17.13",
     "node-github-api": "0.0.2"
   }
 }
