@@ -185,7 +185,7 @@ function quarterlyReport() {
 
 function currentReport () {
   github.repos.get({
-    owner: 'punkave',
+    owner: 'apostrophecms',
     repo: 'apostrophe',
     headers: {
       Accept: 'application/vnd.github.v3.star+json',
