@@ -28,7 +28,7 @@ github.authenticate({
 // TODO: optional authentication here depending on desired endpoints. See below in README.
 
 github.activity.getStargazersForRepo({
-    owner: 'punkave',
+    owner: 'apostrophecms',
     repo: 'apostrophe',
     headers: {
       Accept: 'application/vnd.github.v3.star+json',
